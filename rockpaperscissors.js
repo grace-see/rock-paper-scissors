@@ -21,53 +21,59 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log("Tie!");
+        return;
+    }
     if (humanChoice === "rock") {
-        if (computerChoice === "rock") {
-            console.log("Tie! Rock doesn't beat Rock.");
-        }
-        else if (computerChoice === "paper") {
+        if (computerChoice === "paper") {
             console.log("You lose! Paper beats Rock.");
-            computerScore++;
+            return "c";
         }
         else if (computerChoice === "scissors") {
             console.log("You win! Rock beats Scissors.");
-            humanScore++;
+            return "h";
         }
     }
     else if (humanChoice === "paper") {
         if (computerChoice === "rock") {
             console.log("You win! Paper beats Rock.");
-            humanScore++;
-        }
-        else if (computerChoice === "paper") {
-            console.log("Tie! Paper doesn't beat Paper.");
+            return "h";
         }
         else if (computerChoice === "scissors") {
             console.log("You lose! Scissors beats Paper.");
-            computerScore++;
+            return "c";
         }
     }
     else if (humanChoice === "scissors") {
         if (computerChoice === "rock") {
             console.log("You lose! Scissors beats Rock.");
-            computerScore++;
+            return "c";
         }
         else if (computerChoice === "paper") {
             console.log("You win! Scissors beats Paper.");
-            humanScore++;
-        }
-        else if (computerChoice === "scissors") {
-            console.log("Tie! Scissors doesn't beat Scissors.");
+            return "h";
         }
     }
 }
 
-//Scores for the game
-let humanScore = 0;
-let computerScore = 0;
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    let humanChoice, computerChoice;
+    for (let i = 0; i < 5; i++) {
+        humanChoice = getHumanChoice();
+        computerChoice = getComputerChoice();
+        let winner = playRound(humanChoice, computerChoice);
+        switch (winner) {
+            case "c":
+                computerScore++;
+                break;
+            case "h":
+                humanScore++;
+                break;
+        }
+    }
+}
 
-let playerChoice = getHumanChoice();
-console.log("my choice: "+playerChoice);
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
+playGame();
