@@ -22,36 +22,43 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log("Tie!");
+        roundMessage.textContent = "Tie!";
+        //console.log("Tie!");
         return;
     }
     if (humanChoice === "rock") {
         if (computerChoice === "paper") {
-            console.log("You lose! Paper beats Rock.");
+            roundMessage.textContent = "You lose! Paper beats Rock.";
+            //console.log("You lose! Paper beats Rock.");
             return "c";
         }
         else if (computerChoice === "scissors") {
-            console.log("You win! Rock beats Scissors.");
+            roundMessage.textContent = "You win! Rock beats Scissors.";
+            //console.log("You win! Rock beats Scissors.");
             return "h";
         }
     }
     else if (humanChoice === "paper") {
         if (computerChoice === "rock") {
-            console.log("You win! Paper beats Rock.");
+            roundMessage.textContent = "You win! Paper beats Rock.";
+            //console.log("You win! Paper beats Rock.");
             return "h";
         }
         else if (computerChoice === "scissors") {
-            console.log("You lose! Scissors beats Paper.");
+            roundMessage.textContent = "You lose! Scissors beats Paper.";
+            //console.log("You lose! Scissors beats Paper.");
             return "c";
         }
     }
     else if (humanChoice === "scissors") {
         if (computerChoice === "rock") {
-            console.log("You lose! Scissors beats Rock.");
+            roundMessage.textContent = "You lose! Scissors beats Rock.";
+            //console.log("You lose! Scissors beats Rock.");
             return "c";
         }
         else if (computerChoice === "paper") {
-            console.log("You win! Scissors beats Paper.");
+            roundMessage.textContent = "You win! Scissors beats Paper.";
+            //console.log("You win! Scissors beats Paper.");
             return "h";
         }
     }
@@ -91,6 +98,10 @@ const scissorsBtn = document.querySelector("#scissors");
 scissorsBtn.addEventListener("click", () => {
     playRound("scissors", getComputerChoice());
 });
+
+const resultsDiv = document.querySelector("#results");
+const roundMessage = document.createElement("p");
+resultsDiv.appendChild(roundMessage);
 
 //play the game
 playGame();
