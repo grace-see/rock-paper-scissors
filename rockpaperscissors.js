@@ -76,4 +76,21 @@ function playGame() {
     }
 }
 
+//add event listeners to the buttons
+const rockBtn = document.querySelector("#rock");
+rockBtn.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+});
+
+const paperBtn = document.querySelector("#paper");
+paperBtn.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+});
+
+const scissorsBtn = document.querySelector("#scissors");
+scissorsBtn.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+});
+
+//play the game
 playGame();
